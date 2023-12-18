@@ -1,0 +1,230 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="https://kit.fontawesome.com/0ddb4461fb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'contact.css' %}"> {% endcomment %}
+    <title>ICTA digital library</title>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'contact.css' %}"> {% endcomment %}
+
+    <title>Document</title>
+    <style>
+        
+        body {
+            background-color: #fff;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin-left: 2%;
+            margin-right: 2%;
+            box-shadow:0px 8px 3px 5px rgba(8, 1, 1, 0.2);
+
+        }
+        .logo{
+            width:10%;
+            height:30px;
+            padding-right:18px;
+            margin-right:20px;
+        }
+        .sim{
+            width: 100%;
+            background-color: lightslategrey;
+            border-radius: 5px 5px 0 0;
+            color: yellow;
+        }
+
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    
+        .book {
+            
+            width: 15%;
+            height: 224px;
+            margin: 2%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            border-radius: 10px 10px 0px 0px;
+            border: 1px solid #ccc;
+            margin-left: 20px;
+        }
+        .book:hover{
+            transform: translate(0, 3px);
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        .book-image {
+            height: 200px;
+            width: 100%;
+            margin:auto;
+            object-fit: contain;
+        }
+        #disp{
+            width:100%;
+            height:100%;
+            border-radius: 10px 10px 0px 0px;
+      }
+        .book-details {
+            align-items: center;
+            text-align: left;
+            font-size: 10px;
+            padding-top: 8px;
+            text-align: center;
+            background-color:lightslategrey;
+        }
+    
+        /* Additional styling for book image */
+        .book-image img {
+            width: 200px;
+            height: 200px;
+        }
+      
+    
+    </style>
+    
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <img class="logo"  src="{% static '/img/logo.png' %}" alt="logo">
+        <a href="/" class="navbar-brand" style="color:yellow;">ICTA Library Management</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav"></div>
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                <div style="font-size: 17px; display: flex; justify-content: center; ">
+                    <form style="width: 100%;" style="height: 100%;" method="get" action="/Search/"  >
+                      <div style="background-color: white; width: 100%; height: 80%; border-radius: 10px; margin-top: 7px; " >
+                        <input style="border: none;height: 80%; width: 80%; margin-left: 2%;" type="text" placeholder="Search by bookid" name="query2" id="query2">
+                        <button style="border: none; background-color:white; margin-right: 2%; height: 80%;" type="submit"><i class="fas fa-search"></i></button>
+                      </div>
+                    </form>
+                  </div> 
+                    <a href="/my_books/" class="nav-item nav-link active">My Books</a>
+                    <a href="/HandleLogout/" class="nav-item nav-link active">Logout</a>
+                {% else %}
+                    <a href="/stafflogin/" class="nav-item nav-link active">Sign In</a></li>
+                    <a href="/staffsignup/" class="nav-item nav-link active">Sign Up</a></li>
+                {% endif %}
+        </div>
+    </nav>
+
+    <div style="margin-top: 68px; color: black;">
+        {% if category_name %}
+        <div class="sim">
+            <h2 style="margin-left: 4%;">{{ category_name }}</h2>
+        </div>
+        <div class="book-container">
+            {% for book in books %}
+            <div class="book">
+                <div class="book-image">
+                    {% if book.cover %}
+                    <a href="{% url 'bookdetails' book.bookid %}"><img id="disp" src="{{ book.cover.url }}" /></a>
+                    {% endif %}
+                </div>
+                <div class="book-details">
+                    <a href="{% url 'bookdetails' book.bookid %}" style="text-decoration:none;"><p style="color: white; font-size: 12px;">{{ book.bookname }}</p></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        {% endif %}
+
+        
+        {% for category in categories %}
+        <div class="category-container">
+            <div class="sim">
+                <h3 style="margin-left: 4%;">{{ category.category_name }}</h3>
+            </div>
+            <div class="book-container">
+                {% for book in category.addbook_set.all %}
+                    <div class="book">
+                        <div class="book-image">
+                            {% if book.cover %}
+                                <a href="{% url 'bookdetails' book.bookid %}"><img id="disp" src="{{ book.cover.url }}" /></a>
+                            {% endif %}
+                        </div>
+                        <div class="book-details">
+                            <a style="color:white" href="{% url 'bookdetails' book.bookid %}" style="text-decoration:none;"><p>{{ book.bookname }}</p></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    
+        
+
+    </div>
+    
+    
+<!--     
+    <div style="margin-top: 58px; color: black;">
+        {% if category_name %}
+        <div class="sim">
+            <h2 style="margin-left: 7%;">{{ category_name }}</h2>
+        </div>
+        {% else %}
+        <div class="sim">
+            <h2 style="margin-left: 7%;">All Books and Categories</h2>
+        </div>
+        {% endif %}
+        <div class="book-container">
+            {% for book in books %}
+            <div class="book">
+                <div class="book-image">
+                    {% if book.cover %}
+                    <a href="{% url 'bookdetails' book.bookid %}"><img id="disp" src="{{ book.cover.url }}" /></a>
+                    {% endif %}
+                </div>
+                <div class="book-details">
+                    <a href="{% url 'bookdetails' book.bookid %}" style="text-decoration:none;"><p>{{ book.bookname }}</p></a>
+                    {% if not category_name %}
+                    <p>{{ book.Cat.category_name }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div> -->
+    
+    <!-- <div style="margin-top: 58px; color: black;">
+        {% if category_id %}
+        <div class="sim">
+            <h2 style="margin-left: 7%;">{{ category.category_name }}</h2>
+        </div>
+        {% endif %}
+        <div class="book-container">
+            {% for book in books %}
+            <div class="book">
+                <div class="book-image">
+                    {% if book.cover %}
+                    <a href="{% url 'bookdetails' book.bookid %}"><img id="disp" src="{{ book.cover.url }}" /></a>
+                    {% endif %}
+                </div>
+                <div class="book-details">
+                    <a href="{% url 'bookdetails' book.bookid %}" style="text-decoration:none;"><p>{{ book.bookname }}</p></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+     -->
+</body>
+</html>
+

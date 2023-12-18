@@ -1,0 +1,241 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://kit.fontawesome.com/0ddb4461fb.js" crossorigin="anonymous"></script>
+    <style>
+body{
+  font-family:'Roboto','sans-serif';
+    background-image: url("../static/img/books.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+*{
+    margin:0;
+    padding:0;
+    list-style:none;
+    text-decoration:none;
+}
+.bod{
+    display:flex;
+
+}
+.sidebar {
+    min-height: 100vh;
+    width: 14%;
+    text-align: start;
+    background:#042331;
+    font-size: 16px;
+}
+
+.side {
+    margin-bottom: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    transition: 1.1;
+}
+.header{
+  height: 70px;
+  color: #fff;
+  font-size: 27px;
+  padding-left: 5%;
+  padding-top: 5%;
+  background-color: #0a2936;
+}
+.side:hover a{
+    background-color: aqua;
+    border-radius: 6px;
+    
+}
+.sidebar a {
+    color: #000;
+    text-decoration: none;
+    color: #fff;
+    display:block;
+    line-height: 2rem;
+    color:white;
+    padding-left:20px;
+    box-sizing:border-box;
+
+}
+
+.logout {
+    border-top: whitesmoke solid 1px;
+    position: fixed;
+    bottom: 0;
+    background-color: #0a2936;
+    width: 14%;
+    padding-top: 10px;
+}
+.new{
+  text-align: center;
+}
+.form-box {
+  position:relative;
+  left: 20px;
+  background: #042331;
+  margin-top: 1%;
+  padding-right: 4%;
+  padding-bottom: 25px;
+  height: 550px;
+  border-radius: 15px;
+}
+.form-box form input{
+  width:100%;
+  height:30px;
+  margin-bottom:10px;
+  border: 1px solid #000;
+  margin-top: 10px;
+  margin-right:10px;
+  color: black;
+}
+.form-box form button{
+  width:80px;
+  height:30px;
+  border:none;
+  background-color:blue;
+  font-size:16px;
+  color:#fff;
+  font-family:Lato;
+  margin-left: 33%;
+}
+
+.form-box form label{
+ font-family: Georgia, "Times New Roman", Times, serif;
+ font-size: 16px;
+ color: #fff;
+ height: 40px;
+ clear: both;
+}
+.desi{
+    display:flex;
+    justify-content:space-between;
+
+}
+.right, .center{
+   margin-top:20px;
+   margin-left:30px;
+}
+.left{
+    margin-top:20px;
+    margin-left:50px;
+}
+  .cb{
+    margin-left: 20%;
+  }
+  .side{
+    height: 30px;
+
+  }
+  .side :hover{
+    background-color: aqua;
+  }
+</style>
+</head>
+<body>
+  <div class="bod">
+
+
+    <div class="sidebar">
+      <div>
+        <div class="header" style="display: flex; justify-content: center;"><i style="margin-right: 7%; margin-top: 3%;" class="fa fa-user"></i>Hello   {{ user_name }}</div>
+        <div  style="height: 70%;">
+          <div class="side"><a href="/dash_board/"><i class="fas fa-th"></i></i> Dashboard</a></div>
+          <div class="side"><a href="/dashboard/"><i class="fas fa-book"></i></i> View Books</a></div>
+          <div class="side"><a href="/addbook/"><i class="fas fa-book"></i> Add Book</a></div>
+          <div class="side"><a href="/viewstudents/"><i class="fa fa-user"></i> View Staff</a></div>
+          <div class="side"><a href="/addstudent/"><i class="fa fa-user"></i> Add Staff</a></div>
+          <div class="side"><a href="/bookissue/"><i class="fas fa-paperclip"></i> Issue Book</a></div>
+          <div class="side"><a href="/viewissuedbook/"><i class="fas fa-paperclip"></i> Issued Book</a></div>
+          <div class="side"><a href="/returnbook/"><i class="fas fa-exchange-alt"></i> Return Book</a></div>
+        </div>
+        <div>
+        <a style="font-size: 20px; display: flex; justify-content: space-between; padding-right: 20px;" href="/HandleLogout/" class="logout" href="#"> Log Out <i class="fa-solid fa-right-from-bracket"></i></a>
+      </div>
+      </div>
+    </div>
+
+
+    
+    <div class="form-box">
+      <form action="/AddBookSubmission/" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="desi">
+            <div class="left">
+                    <label for="bookid">ISBN NO.:</label>
+                    <input type="text" name="bookid" class="form-control" id="bookid" required/>
+                <br>
+                    <label for="bookname">Book Title:</label>
+                    <input type="text" name="bookname" class="form-control" id="bookname" required/>
+                <br>
+                    <label for="author">Author</label>
+                    <input type="text" name="author" class="form-control" id="author" required>
+                <br>
+                    <label for="publisher">Publisher</label>
+                    <input type="text" name="publisher" class="form-control" id="publisher" required>
+                <br>
+            </div>
+            <div class="center">
+              <label for="libNo">Library No</label>
+              <input type="text" name="libNo" class="form-control" id="libNo" required>           
+              <br>
+              <label for="publisher">Language</label>
+              <input type="text" name="language" class="form-control" id="language" required>
+              <br>
+              <label for="edition">Edition</label>
+              <input type="text" name="edition" class="form-control" id="edition" required> 
+              <br>
+              <label for="cover" style="margin-left: 12%;">Book Cover:</label>
+              <input type="file" id="pdf" name="cover" style="width:50%;">
+              
+          <br>
+            </div>
+            <div class="right">
+                  
+              <label for="Location">Location</label>
+              <input type="text" name="location" class="form-control" id="location" required>
+              <br>
+              <label for="copies">No. of copies</label>
+              <input type="number" name="copies" class="form-control" id="copies" required>
+              <br>
+              <label for="publisher">Pages</label>
+              <input type="text" name="pages" class="form-control" id="pages" required>    
+              <br>
+              <label for="cover" style="margin-left: 12%;">Book File:</label>
+              <input type="file" id="cover" name="pdf" style="width:50%;">
+              <br>
+              <label class="required" for="id_Cat">Cat:</label>
+                 <select name="Cat" required id="id_Cat">
+                  <option value="1" selected>Thriller</option>
+                  <option value="3">Magazines</option>
+                  <option value="4">Training & Development</option>
+                  <option value="5">Project Management</option>
+                  <option value="6">Research & Development</option>
+                  <option value="7">Reference Materials</option>
+
+                </select>
+            </div>
+          </div>
+          <br>
+          <div style="margin-left: 5%; color: #fff;" >
+            <label for="subject"style="margin-left:43%;" >Description:</label>
+            <input style="height: 50px;" type="text" name="subject" class="form-control" id="subject" required/>
+          </div>
+          <div class="cov">
+            <div class="cb">
+              <br>
+              <br>
+              <button type="submit">Submit</button>
+            </div>
+          </div>
+      </form>
+    </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+</html>

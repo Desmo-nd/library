@@ -1,0 +1,189 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="https://kit.fontawesome.com/0ddb4461fb.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body{
+  background-image: url("../static/img/books.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  font-family:'Roboto','sans-serif';
+}
+*{
+    margin:0;
+    padding:0;
+    list-style:none;
+    text-decoration:none;
+}
+.new{
+    display:flex;
+}
+
+.sidebar {
+    min-height: 100vh;
+    width: 14%;
+    text-align: start;
+    background:#042331;
+    font-size: 16px;
+}
+.side {
+    margin-bottom: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    transition: 1.1;
+}
+.header{
+  height: 70px;
+  color: #fff;
+  font-size: 30px;
+  padding-left: 5%;
+  padding-top: 5%;
+  background-color: #0a2936;
+}
+.side:hover a{
+    background-color: aqua;
+    border-radius: 6px;
+    
+}
+.sidebar a {
+    color: #000;
+    text-decoration: none;
+    color: #fff;
+    display:block;
+    line-height: 2rem;
+    color:white;
+    padding-left:20px;
+    box-sizing:border-box;
+
+}
+
+.logout {
+    border-top: whitesmoke solid 1px;
+    position: fixed;
+    bottom: 0;
+    background-color: #0a2936;
+    width: 14%;
+    padding-top: 10px;
+    
+
+}
+
+.new{
+  text-align: center;
+  
+}
+
+.form-box {
+  position:relative;
+  left:20x;
+  top:20%;
+  position:fixed;
+  background-color: #042331;
+  margin-left: 20%;
+  border-radius: 15px;
+  
+}
+.form-box form input{
+  width:100%;
+  height:30px;
+  margin-bottom:10px;
+  border: 1px solid #000;
+  margin-top: 10px;
+  margin-right:10px;
+}
+.form-box form button{
+  width:80px;
+  height:30px;
+  border:none;
+  background-color:blue;
+  font-size:16px;
+  color:#fff;
+  font-family:Lato;
+}
+
+.form-box form label{
+ font-family: Georgia, "Times New Roman", Times, serif;
+ font-size: 20px;
+ color: #fff;
+ height: 40px;
+ clear: both;
+}
+.container{
+    display:flex;
+    justify-content: space-between;
+    width: 774px;
+}
+.cont1{
+  margin: auto;
+}
+.cont2{
+  margin: auto;
+}
+
+</style>
+</head>
+<body>
+<div class="new">
+
+    <div class="sidebar">
+        <div>
+          <div class="header" style="display: flex; justify-content: center;"><i style="margin-right: 7%; margin-top: 3%;" class="fa fa-user"></i>Hello   {{ user_name }}</div>
+          <div  style="height: 70%;">
+            <div class="side"><a href="/dash_board/"><i class="fas fa-th"></i></i> Dashboard</a></div>
+            <div class="side"><a href="/dashboard/"><i class="fas fa-book"></i></i> View Books</a></div>
+            <div class="side"><a href="/addbook/"><i class="fas fa-book"></i> Add Book</a></div>
+            <div class="side"><a href="/viewstudents/"><i class="fa fa-user"></i> View Staff</a></div>
+            <div class="side"><a href="/addstudent/"><i class="fa fa-user"></i> Add Staff</a></div>
+            <div class="side"><a href="/bookissue/"><i class="fas fa-paperclip"></i> Issue Book</a></div>
+            <div class="side"><a href="/viewissuedbook/"><i class="fas fa-paperclip"></i> Issued Book</a></div>
+            <div class="side"><a href="/returnbook/"><i class="fas fa-exchange-alt"></i> Return Book</a></div>
+          </div>
+          <div>
+          <a style="font-size: 20px; display: flex; justify-content: space-between; padding-right: 20px;" href="/HandleLogout/" class="logout" href="#"> Log Out <i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+        </div>
+      </div>
+
+    <div class="bg-img">
+        <div class="form-box">
+            <div class="wrapper" style="padding: 20px;">
+                <form action="/addstudentsubmission/" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="cont1">
+                            <label for="fname">First name:</label>
+                            <input type="text" name="fname" class="form-control" id="fname" required/>
+                        <br>
+                            <label for="lname">last name:</label>
+                            <input type="text" name="lname" class="form-control" id="lname" required/>
+                        <br>
+                            <label for="username"> username:</label>
+                            <input type="text" name="username" class="form-control" id="username" required/>
+                        <br>
+                    </div>
+                    <div class="cont2">
+                            <label for="studentid">Staff Id:</label>
+                            <input type="text" name="studentid" class="form-control" id="studentid" required/>
+                        <br>
+                            <label for="email">Staff email:</label>
+                            <input type="text" name="semail" class="form-control" id="email" required/>
+                        <br>
+                            <label class="small mb-1" for="password">Password</label>
+                            <input class="form-control py-4" id="password" name="password" type="password" aria-describedby="emailHelp" placeholder="Enter password" required />
+                        </br>
+                    </div>
+                </div>
+                <button type="submit" >Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+</html>

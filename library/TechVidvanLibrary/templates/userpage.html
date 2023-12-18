@@ -1,0 +1,371 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="https://kit.fontawesome.com/0ddb4461fb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'contact.css' %}"> {% endcomment %}
+    <title>ICTA digital library</title>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'contact.css' %}"> {% endcomment %}
+
+    <style type="text/css">
+    body {
+      background-color: #fff;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .bs-example {
+      margin: 0px;
+
+    }
+    .bg-dark {
+    background-color: 	#343a40!important;
+}
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
+
+    
+    .pic {
+        position: relative;
+        width: 100%;
+        height: 255px;
+        margin-top: 32.69px;
+        overflow: hidden;
+    }
+
+    .pic::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{% static '/img/pen.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .pic-text {
+      position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translate(0, -50%);
+        color: white;
+        font-size: 50px;
+        font-weight: bold;
+
+    }
+    #desi{
+      width: 100%;
+    }
+    .mon{
+      margin-top: 0.5%;
+      height: 70px;
+      margin-right: 2%;
+
+    }
+
+    .logo{
+         width:10%;
+         height:30px;
+         padding-right:18px;
+         margin-right:20px;
+        }
+    .search-container{
+      padding: 10px;
+      background-color: #667;
+      width: 100%;
+      height: 50px;
+    }
+    .srch{
+      display: block;
+      float: right;
+      padding-right: 2%;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .book-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+
+    }
+    .book {
+      width: 15%;
+      height: 224px;
+      margin: 2%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      border-radius: 10px 10px 0px 0px;
+      border: 1px solid #ccc;
+      margin-left: 20px;
+    }
+    .book:hover{
+      /* transform: translate(0, 3px); */
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+    .book-image{
+        height: 200px;
+        width: 100%;
+        margin:auto;
+
+        object-fit: contain;
+    }
+    #disp{
+        width:100%;
+        height:100%;
+        border-radius: 10px 10px 0px 0px;
+      }
+
+    .book-details{
+      align-items: center;
+      text-align: left;
+      font-size: 10px;
+      padding-top: 8px;
+      text-align: center;
+      background-color:lightslategrey;
+   }
+
+   .footer{
+    height: 215px;
+    background-color: black;
+    font-family: sans-serif;
+    font-size: 13px;
+   }
+   .socials{
+    display: flex;
+    justify-content: space-between;
+    height: 140px;
+    margin-right: 2%;
+   }
+
+   .log{
+    width: 25%;
+    background-color: lightslategrey;
+    border-radius: 0 0 5px 0;
+   }
+   .top{
+    margin: auto;
+    height: 60px;
+    margin-left:32% ;
+    margin-top: 10%;
+
+
+   }
+   .icons{
+    margin-left: 20%;
+    margin-top: 5px;
+    padding-right: 3px;
+
+   }
+   .icons i{
+    margin-left: 3px;
+    margin-right: 3px;
+   }
+
+   .about{
+    height: 90px;
+    width:20%;
+    /* text-align: center; */
+  }
+  .about ul li{
+    list-style: none;
+  }
+  .about ul li:hover{
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+
+  .discover{
+    width: 20%;
+    margin-top: 10px;
+    /* text-align: center; */
+  }
+  .discover ul li{
+    list-style: none;
+  }
+  .discover ul li:hover{
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+  .help{
+    width: 25%;
+    /* text-align: center; */
+  }
+  .help ul li{
+    list-style: none;
+  }
+  .help ul li:hover{
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+  .titl{
+    color:yellow;
+    text-align: center;
+    background-color: lightslategrey;
+    padding: 10px;
+
+  }
+
+  .category-menu {
+  display: inline-block;
+  position: relative;
+}
+
+.category-header {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+.category-list {
+  width:220px;
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  background-color: #fff;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.category-list li {
+  padding: 4px 0;
+}
+
+  </style>
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <img class="logo"  src="{% static '/img/logo.png' %}" alt="logo">
+    <a href="/" class="navbar-brand" style="color:yellow;">ICTA Library Management</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <div class="navbar-nav">
+        <a href="/" class="nav-item nav-link active">Home</a>
+      </div>
+      <div class="navbar-nav">
+        {% if user.is_authenticated %}
+          <div style="font-size: 17px; display: flex; justify-content: center; ">
+            <form style="width: 100%;" style="height: 100%; margin-top: 10px;" method="get" action="/Search/"  >
+              <div style="background-color: white; width: 100%; height: 70%; border-radius: 10px; margin-top: 5px; " >
+                <input style="border: none;height: 80%; width: 80%; margin-left: 2%;" type="text" placeholder="Search by book title" name="query2" id="query2">
+                <button style="border: none; background-color:white; margin-right: 2%; height: 80%;" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+            </form>
+          </div> 
+            <a href="/bookcategory/" class="nav-item nav-link active">Categories</a>
+            <a href="/my_books/" class="nav-item nav-link active">My Books</a>
+            <a href="/HandleLogout/" class="nav-item nav-link active">Logout</a>
+          {% else %}
+            <a href="/stafflogin/" class="nav-item nav-link active">Sign In</a></li>
+            <a href="/staffsignup/" class="nav-item nav-link active">Sign Up</a></li>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <div class="disply">
+  <div class="pic">
+    <div class="pic-text">
+      <div class="pict" style="display: flex; justify-content: center;">
+        <img class="mon"  src="{% static '/img/top.png' %}" alt="logo">
+        <label>Find the right resources, Better & Faster</label>
+      </div>     
+    </div>
+  </div>
+    <div class="search-container">
+      
+    </div>
+  <div class="book-container">
+    {% for book in books %}
+      <div class="book">
+        <div class="book-image" >
+              {% if book.cover%}
+              <a href="{% url 'bookdetails' book.bookid %}"><img id="disp" src={{book.cover.url}}/></a>
+            {% endif %}
+        </div>
+        <div class="book-details">
+          <a href="{% url 'bookdetails' book.bookid %}" text-decoration:none;"><p style="color: white; font-size: 12px;">{{ book.bookname }}</p></a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+  <div class="footer">
+    <div class="socials">
+      <div class="log">
+        <img class="top"  src="{% static '/img/top.png' %}" alt="logo">
+        <div class="icons">
+          <i class="fa-brands fa-youtube" style="font-size:16px;"></i>
+          <i class="fa-brands fa-instagram" style="font-size:16px;"></i>
+          <i class="fa-brands fa-facebook" style="font-size:16px;"></i>
+          <i class="fa-brands fa-twitter" style="font-size:16px;"></i>
+        </div>
+      </div>
+      <div class="about">
+        <ul style="margin-top: 10px;">
+          <li><span style="font-weight:bold; text-decoration: underline; font-size: larger;">ICTA library</span></li>
+          <li>vision</li>
+          <li>About us</li>
+          <li>Contact Us</li>
+          <li>Patner with us</li>
+          <li>Terms of Service</li>
+        </ul>
+      </div>
+      <div class="discover">
+        <ul>
+          <li><span style="font-weight:bold; text-decoration: underline; font-size: larger;">Discover</span></li>
+          <li>Home</li>
+          <li>Books</li>
+          <li>Authors</li>
+          <li>Subject</li>
+          <li>Advanced Search</li>
+
+        </ul>
+      </div>
+      <div class="help">
+        <ul style="margin-top: 10px;">
+          <li><span style="font-weight:bold; text-decoration: underline; font-size: larger;"> Help</span></li>
+          <li>©Copyright</li>
+          <li>Help center</li>
+          <li>Accessibility</li>
+          <li>Privacy Policy</li>
+          <li>Report an Ethical Concern</li>
+        </ul>
+      </div>
+    </div>
+    <div class="titl">
+      <a href=""style="color:yellow; font-size:16px" >ICTA Library Management</a>
+    </div>
+    <div style="text-align: center;">
+      <p>Nairobi|Teleposta Towers|<i class="fa-solid fa-phone" style="font-size:11px;"></i> (00) 000 000 00</p>
+    </div>
+  </div>
+</body>
+</html>

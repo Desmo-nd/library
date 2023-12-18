@@ -1,0 +1,275 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Library Management System</title>
+    <script src="https://kit.fontawesome.com/0ddb4461fb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <style>
+        body {
+            font-family:'Roboto','sans-serif';
+            margin: 0;
+            padding: 0;
+        }
+       .topnav {
+            width: 100%;
+            height: 57.5px;
+            overflow: hidden;
+            background-color: #042331;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+
+        }
+        .topnav a {
+            float: left;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 17px 18px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Navbar links on mouse-over */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Style the input container */
+        .topnav .search-container {
+            float: right;
+        }
+
+        /* Style the input field inside the navbar */
+        .topnav input[type=text] {
+            padding: 5px;
+            margin-top: 9px;
+            margin-left: 4px;
+            margin-bottom: 5px;
+            font-size: 12px;
+            border: none;
+        }
+
+        /* Style the button inside the input container */
+        .topnav .search-container button {
+            float: right;
+            padding: 5px;
+            margin-top: 9px;
+            margin-right: px;
+            background: #ddd;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+
+        /* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+        @media screen and (max-width: 600px) {
+            .topnav .search-container {
+                float: none;
+            }
+
+            .topnav a,
+            .topnav input[type=text],
+            .topnav .search-container button {
+                float: none;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: 0;
+            }
+
+            .topnav input[type=text] {
+                border: 1px solid #042331;
+            }
+        }
+.sidebar {
+    min-height: 100vh;
+    width: 14%;
+    text-align: start;
+    background:#042331;
+    font-size: 16px;
+    position: fixed;
+}
+.side {
+    margin-bottom: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    transition: 1.1;
+}
+.header{
+  height: 70px;
+  color: #fff;
+  font-size: 30px;
+  padding-left: 5%;
+  padding-top: 5%;
+  background-color: #0a2936;
+}
+.side:hover a{
+    background-color: aqua;
+    border-radius: 6px;
+    
+}
+.sidebar a {
+    color: #000;
+    text-decoration: none;
+    color: #fff;
+    display:block;
+    line-height: 2rem;
+    color:white;
+    padding-left:20px;
+    box-sizing:border-box;
+    
+}
+
+.logout {
+    border-top: whitesmoke solid 1px;
+    position: fixed;
+    bottom: 0;
+    background-color: #0a2936;
+    width: 12.2%;
+    padding-top: 10px;
+    
+
+}
+* {box-sizing: border-box;}
+.content {
+    overflow: auto;
+    width: 100vw;
+}
+
+.table-container {
+margin-left: 14%;
+    overflow: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background-color: #2B3F57;
+    text-align: center;
+    color: #FFFFFF;
+    position: ;
+    
+}
+
+
+.table thead tr th {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05px;
+    padding: 15px 30px 15px 0px;
+    vertical-align: middle;
+    border: 1px solid #000000;
+}
+
+.table tbody tr td {
+    font-size: 14px;
+    letter-spacing: 0.35px;
+    font-weight: normal;
+    padding: 8px 0px 0px 15px;
+    text-align: center;
+    border: 1px solid #000000;
+    text-align:start;
+}
+.new{
+  display: flex;
+  margin-top: 58px;
+  
+}
+.table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  #lip{
+    color: black;
+  }
+  #lip i :hover{
+    color: rgb(69, 241, 69);
+  }
+</style>
+</head>
+<body>
+ <div class="topnav">
+        <div class="search-container">
+            <div style = "position:relative; right:120px">
+            <form style="width: 100%;" style="height: 100%; margin-top: 10px;" method="get" action="/Search/"  >
+                    <input type="text" placeholder="Search by book title" name="query2" id="query2">
+                    <button type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+    </div>
+
+
+<div class="new">
+    <div class="sidebar">
+        <div>
+          <div class="header" style="display: flex; justify-content: center;"><i style="margin-right: 7%; margin-top: 3%;" class="fa fa-user"></i>Hello   {{ user_name }}</div>
+          <div  style="height: 70%;">
+            <div class="side"><a href="/dash_board/"><i class="fas fa-th"></i></i> Dashboard</a></div>
+            <div class="side"><a href="/dashboard/"><i class="fas fa-book"></i></i> View Books</a></div>
+            <div class="side"><a href="/addbook/"><i class="fas fa-book"></i> Add Book</a></div>
+            <div class="side"><a href="/viewstudents/"><i class="fa fa-user"></i> View Staff</a></div>
+            <div class="side"><a href="/addstudent/"><i class="fa fa-user"></i> Add Staff</a></div>
+            <div class="side"><a href="/bookissue/"><i class="fas fa-paperclip"></i> Issue Book</a></div>
+            <div class="side"><a href="/viewissuedbook/"><i class="fas fa-paperclip"></i> Issued Book</a></div>
+            <div class="side"><a href="/returnbook/"><i class="fas fa-exchange-alt"></i> Return Book</a></div>
+          </div>
+          <div>
+          <a style="font-size: 20px; display: flex; justify-content: space-between; padding-right: 20px;" href="/HandleLogout/" class="logout" href="#"> Log Out <i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+        </div>
+      </div>
+
+    <div class="content">
+        <div class="table-container">
+            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Subject</th>
+                    <th>Location</th>
+                    <th>Copies</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for info in Book %}
+                <tr>
+                    <td data-label="bookid">{{info.bookid}}</td>
+                    <td data-label="bookname">{{info.bookname}}</td>
+                    <td data-label="author">{{info.author}}</td>
+                    <td data-label="subject">{{info.subject}}</td>
+                    <td data-label="location">{{info.location}}</td>
+                    <td data-label="copies">{{info.copies}}</td>
+                    <td><a id="lip" href="{% url 'editbookdetails' info.id %}"><i  class="fa-solid fas fas far far fa-edit" style="margin-left: 30%; font-size: 17px; color: #003F29;"></i></a></td>
+                    <td><a href="{% url 'deletebook' info.id %}"><i  class="fa-solid fas fas far fa-trash-alt" style="margin-left: 30%; font-size: 17px; color: #611F20"></i></a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+</html>

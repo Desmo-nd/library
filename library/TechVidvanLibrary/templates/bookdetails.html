@@ -1,0 +1,807 @@
+{%load static%}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="https://kit.fontawesome.com/0ddb4461fb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'contact.css' %}"> {% endcomment %}
+    <title>ICTA digital library</title>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'contact.css' %}"> {% endcomment %}
+
+    <style type="text/css">
+    body {
+      background-color: #fff;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .bs-example {
+      margin: 0px;
+
+    }
+    .bg-dark {
+    background-color: 	#343a40!important;
+    }
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
+
+    .ict{
+        width: 100%;
+        height: 250px;
+        margin: auto;
+        margin-top:57px;
+        display: flex;
+        background: linear-gradient(to right, #b92b27, #1565c0);
+      }
+    #desi{
+      width: 50%;
+    }
+
+    #find{
+      padding-top: 10%;
+      padding-left: 5%;
+      color:black;
+      font-size: 30px;
+      font-weight: bolder;
+   }
+    .logo{
+      width:10%;
+      height:30px;
+      padding-right:18px;
+      margin-right:20px;
+    }
+
+
+
+
+    .contain{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+      margin-top: 6%;
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+    .cover{
+      width: 25%;
+      height: 400px;
+      border: black 1px solid;
+      border-radius: 5px;
+      background-color: #C4C4C4;
+    }
+    #displ{
+      width: 98%;
+      height: 350px;
+      padding-left: 2%;
+      margin-top: 2%;
+    }
+    .details {
+      color: black;
+      width: 74%;
+      height: 400px;
+      border: black 1px solid;
+      border-radius: 5px;
+      background-color: #C4C4C4;
+      
+    }
+    .dess{
+      width: 98%;
+      height: 100%;
+      margin: auto;
+    }
+    #title{
+      font-size: 40px;
+      padding-left: 2%;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    #by{
+      font-style: italic;
+      color: #023246;
+      padding-left: 2%;
+    }
+    .descrip-cont{
+      background-color: white;
+      border-radius: 5px;
+      height: 60%;
+      width: 98%;
+      margin-left: 2%;
+
+    }
+    #descrip{
+      background-color: lightslategrey;
+      font-family: 'Times New Roman', Times, serif;
+      color: yellow;
+      padding-left: 3%;
+      border-radius: 3px, 3px, 0 0;
+      cursor: pointer;
+    }
+    .disp{
+      display: flex;
+      cursor: pointer;
+    }
+    .spec{
+      width:fit-content;
+      border: black 1px;
+      padding-left: 2%;
+      margin: auto;
+      margin-top: 10px;
+    }
+    #dis{
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 3px;
+      width: fit-content;
+      font-size: 14px;
+      color: #fff;
+      margin-top: 7px;
+
+    }
+    .butt{
+      display: flex;
+      margin-top: 3%;
+      width: 96%;
+      margin-left: 2%;
+      font-size: 15px;
+      justify-content: space-between;
+    }
+    #bor{
+      background-color: #120d2c;
+      border: none;
+      color: #fff;
+      border-radius: 3px;
+    }
+    #borr{
+      margin-left: 99px;
+      border:none;
+      background-color: #120d2c;
+      color: #fff;
+      border-radius: 3px;
+    }
+    .bookcontainer{
+      border:black 1px  solid;
+      background-color: #f6f7f3;
+      margin-top: 20px;
+      margin-left: 2%;
+      margin-right: 2%;
+      border-radius: 5px;
+  }
+    .sim{
+      width: 100%;
+      background-color: lightslategrey;
+      border-radius: 5px 5px 0 0;
+    }
+    #sb{
+      width: 100%;
+      color: yellow;
+      padding-left: 8%;
+      margin-top: 10px;
+      font-size: 19px;
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bolder;
+    }
+    .book-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+
+    }
+
+    .book {
+      width: 15%;
+      height: 224px;
+      margin: 2%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      border-radius: 10px 10px 0px 0px;
+      border: 1px solid #ccc;
+      margin-left: 20px;
+    }
+    .book:hover{
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+    .book-image{
+        height: 200px;
+        width: 100%;
+        margin:auto;
+
+        object-fit: contain;
+    }
+    #disp{
+        width:100%;
+        height:100%;
+        border-radius: 10px 10px 0px 0px;
+      }
+
+    .book-details{
+      align-items: center;
+      text-align: left;
+      font-size: 10px;
+      padding-top: 8px;
+      text-align: center;
+      background-color:lightslategrey;
+   }
+
+
+   .footer{
+    height: 215px;
+    background-color: black;
+    font-family: sans-serif;
+    font-size: 13px;
+   }
+   .socials{
+    display: flex;
+    justify-content: space-between;
+    height: 140px;
+    margin-right: 2%;
+   }
+
+   .log{
+    width: 25%;
+    background-color: lightslategrey;
+    border-radius: 0 0 5px 0;
+   }
+   .top{
+    margin: auto;
+    height: 60px;
+    margin-left:32% ;
+    margin-top: 10%;
+
+
+   }
+   .icons{
+    margin-left: 20%;
+    margin-top: 5px;
+    padding-right: 3px;
+
+   }
+   .icons i{
+    margin-left: 3px;
+    margin-right: 3px;
+   }
+
+   .about{
+    height: 90px;
+    width:20%;
+  }
+  .about ul li{
+    list-style: none;
+  }
+  .about ul li:hover{
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+
+  .discover{
+    width: 20%;
+    margin-top: 10px;
+  }
+  .discover ul li{
+    list-style: none;
+  }
+  .discover ul li:hover{
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+  .help{
+    width: 25%;
+  }
+  .help ul li{
+    list-style: none;
+  }
+  .help ul li:hover{
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+  .titl{
+    color:yellow;
+    text-align: center;
+    background-color: lightslategrey;
+    padding: 10px;
+
+  }
+    .star-rating i{
+      color: #fff;
+      cursor: pointer;
+  }
+
+  .star-rating i.active {
+      color: #ffcc00;
+  }
+  .review{
+    background-color: #ccc;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-top: 2%;
+  }
+  .rate{
+    color: black;
+    padding-left: 5%;
+    width: 100%;
+    margin-top: 20px;
+    
+  }
+  .reviewcont {
+  color: black;
+}
+
+.reviews {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 3%;
+}
+
+.star {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 2%;
+}
+
+.star i {
+  color: #fff; 
+}
+.star :hover{
+  color: #f8ce0b;
+}
+.star.selected i {
+  color: #f8ce0b; 
+}
+.star {
+    color: gray;
+  }
+
+  .avgstar {
+    color: yellow;
+  }
+  #averageRating{
+    margin-left: 2%;
+  }
+  .display_ratings{
+    width: 46%;
+    border: #120d2c 0.5px solid;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  
+
+  
+#userDetails {
+    position: absolute;
+    right: 0;
+    z-index: 9999; 
+    border: 1px solid #ccc;
+    width: 20%;
+    margin-top: 30px;
+    z-index: 1;
+  }
+.container {
+    float: right;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    height: 300px;
+    background-color: #fff;
+    background-color: rgba(17, 96, 73, 0.8);
+        color: white;
+}
+.profile-picture {
+    width: 90px;
+    height: 90px;
+    border-radius: 70%;
+    margin-right: 20px;
+    margin: 5px;
+    border: black 0.5px solid;
+    margin: auto;
+}
+
+.profile-name {
+    font-size: 20px; 
+    text-align: center;
+    text-decoration: underline black;
+}
+.cont{
+  padding-top: 20px;
+  width: 100%;
+}
+
+
+
+.wrapper {
+    position: relative;
+  }
+.profile-label {
+    font-weight: bold;
+}
+
+.prof{
+    text-align: center;
+}
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <img class="logo"  src="{% static '/img/logo.png' %}" alt="logo">
+    <a href="/" class="navbar-brand" style="color:yellow;">ICTA Library Management</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <div class="navbar-nav">
+        <a href="/" class="nav-item nav-link active">Home</a>
+      </div>
+      <div class="navbar-nav">
+        {% if user.is_authenticated %}
+          <div style="font-size: 17px; display: flex; justify-content: center; ">
+            <form style="width: 100%;" style="height: 100%; margin-top: 10px;" method="get" action="/Search/"  >
+              <div style="background-color: white; width: 100%; height: 70%; border-radius: 10px; margin-top: 5px; " >
+                <input style="border: none;height: 80%; width: 80%; margin-left: 2%;" type="text" placeholder="Search by book title" name="query2" id="query2">
+                <button style="border: none; background-color:white; margin-right: 2%; height: 80%;" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+            </form>
+          </div> 
+            <a href="/my_books/" class="nav-item nav-link active">My Books</a>
+            <a href="/bookcategory/" class="nav-item nav-link active">category</a>
+            <a href="/profile/" class="nav-item nav-link active" onclick="toggleUserDetails(event)">Profile</a>
+            <a href="/HandleLogout/" class="nav-item nav-link active">Logout</a>
+          {% else %}
+            <a href="/stafflogin/" class="nav-item nav-link active">Sign In</a></li>
+            <a href="/student_signup/" class="nav-item nav-link active">Sign Up</a></li>
+          {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <div id="userDetails" style="display: none;">
+    <div class="container">
+      <div class="profile-container">
+        <h2 class="profile-name">User Profile</h2>
+        <div class="cont">
+          <div class="profile-picture">
+            {% if user.profile_pic %}
+              <img style="height: 100%; width: 100%;" src="{{ user.profile_pic.url }}" alt="Profile Picture">
+            {% else %}
+              <i style="width: 100%; height: 100%; display: flex; justify-content: space-around; font-size: 50px; margin-top: 20px;" class="fa-solid fa-user"></i>
+            {% endif %}
+          </div>
+
+          <div class="profile-info">
+            <div class="prof">{{user.username }}<br>
+              {{user.email }}
+            </div><br>
+            <div class="profile-label">
+              <label>First Name:</label> {{user.first_name }}<br>
+              <label>Last Name:</label>  {{user.last_name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+      <div class="message {{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div>
+  <div class="contain">
+    <div class="cover">
+        {% if book.cover%}
+            <img id="displ" src={{book.cover.url}}/>
+        {% endif %}
+        {% if user.is_authenticated %}
+        {% if not book.borrowed %}
+          <div class="butt">        
+            <form id="borrowForm" action="{% url 'borrow_book' book_id=book.id %}" method="POST">
+              {% csrf_token %}
+              <button type="button" onclick="checkBorrow()">Borrow</button>
+            </form>
+            <button id="reviewButton" onclick="toggleReview()">Review</button>  
+          </div>
+        {% else %}
+          <p>This book is already borrowed.</p>
+        {% endif %}
+      {% endif %}
+
+    </div>
+ 
+  
+    <div class="details">
+        <div class="dess">
+            <label id="title">{{ book.bookname }}</label>
+            <br>
+            <label id="by">By {{ book.author }}</label><span id="averageRating"><i class="fas fa-star">{{average_rating }}</i></span>
+            <div class="descrip-cont">
+              <p id="descrip">Book description<p>
+              <p style="padding-left: 2%;">{{ book.subject }}</p>
+            </div>
+            <div class="disp">
+              <div class="spec">
+                <p id="dis" style="background-color: #120d2c;">Edition:{{ book.edition }}</p>
+              </div>
+              <div class="spec">
+                <p id="dis" style="background-color: #120d2c;">ISBN: {{ book.bookid }}</p>
+              </div>
+              <div class="spec">
+                <p id="dis" style="background-color: #120d2c;">Publisher: {{ book.publisher }}</p>
+              </div>
+              <div class="spec">
+                <p id="dis" style="background-color: #120d2c;">Language: {{ book.language }}</p>
+              </div>
+              <div class="spec">
+                <p id="dis" style="background-color: #120d2c;">Pages: {{ book.pages }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div >
+    
+  <div class="review" id="reviewElement" style="display: none;">
+    <form class="rate" action="{% url 'rate_book' bookid=book.bookid %}" method="POST">
+      {% csrf_token %}
+      <div>
+        <div id="rating">
+          <label for="">Rate the book:</label>
+          <span class="star" onclick="setRating(1)"><i class="fas fa-star"></i></span>
+          <span class="star" onclick="setRating(2)"><i class="fas fa-star"></i></span>
+          <span class="star" onclick="setRating(3)"><i class="fas fa-star"></i></span>
+          <span class="star" onclick="setRating(4)"><i class="fas fa-star"></i></span>
+          <span class="star" onclick="setRating(5)"><i class="fas fa-star"></i></span>
+        </div>
+        <input type="hidden" id="id_rating" name="rating" value="">
+      </div>
+      <div>
+        <label for="id_review">Review:</label><br>
+        <textarea style="width: 96%;" id="id_review" name="review" placeholder="your comment"></textarea>
+      </div>
+      <button style="margin-left: 46%;" type="submit">Submit</button>
+    </form>
+    <div class="reviewcont">
+      <div class="reviews">
+        {% for rating in ratings %}
+        <div class="display_ratings">
+          <label>User: {{ rating.user }} </label><br>
+          <p>Rating: <span class="stars">{{ rating.rate }}</span></p>
+          <label>Comment: {{ rating.comment }}</label>
+        </div>
+        {% empty %}
+          <p>No ratings available.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="bookcontainer">
+    <div class="sim">
+      <label for="" id="sb">Similar Books</label>
+    </div>
+    <div class="book-container">
+      {% for book in similar_books %}
+        <div class="book">
+          <div class="book-image">
+            {% if book.cover %}
+              <a href="{% url 'bookdetails' bookid=book.bookid %}">
+                <img id="disp" src="{{ book.cover.url }}" alt="{{ book.bookname }} Image">
+              </a>
+            {% else %}
+              <p>No image available</p>
+            {% endif %}
+          </div>
+          <div class="book-details">
+            <a href="{% url 'bookdetails' bookid=book.bookid %}" style="color:white; text-decoration:none;">
+              <p>{{ book.bookname }}</p>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+ 
+  <div class="footer">
+    <div class="socials">
+      <div class="log">
+        <img class="top"  src="{% static '/img/top.png' %}" alt="logo">
+        <div class="icons">
+          <i class="fa-brands fa-youtube" style="font-size:16px;"></i>
+          <i class="fa-brands fa-instagram" style="font-size:16px;"></i>
+          <i class="fa-brands fa-facebook" style="font-size:16px;"></i>
+          <i class="fa-brands fa-twitter" style="font-size:16px;"></i>
+        </div>
+      </div>
+      <div class="about">
+        <ul style="margin-top: 10px;">
+          <li><span style="font-weight:bold; text-decoration: underline; font-size: larger;">ICTA library</span></li>
+          <li>vision</li>
+          <li>About us</li>
+          <li>Contact Us</li>
+          <li>Partner with us</li>
+          <li>Terms of Service</li>
+        </ul>
+      </div>
+      <div class="discover">
+        <ul>
+          <li><span style="font-weight:bold; text-decoration: underline; font-size: larger;">Discover</span></li>
+          <li>Home</li>
+          <li>Books</li>
+          <li>Authors</li>
+          <li>Subject</li>
+          <li>Advanced Search</li>
+
+        </ul>
+      </div>
+      <div class="help">
+        <ul style="margin-top: 10px;">
+          <li><span style="font-weight:bold; text-decoration: underline; font-size: larger;"> Help</span></li>
+          <li>©Copyright</li>
+          <li>Help center</li>
+          <li>Accessibility</li>
+          <li>Privacy Policy</li>
+          <li>Report an Ethical Concern</li>
+        </ul>
+      </div>
+    </div>
+    <div class="titl">
+      <a href=""style="color:yellow; font-size:16px" >ICTA Library Management</a>
+    </div>
+    <div style="text-align: center;">
+      <p>Nairobi|Teleposta Towers|<i class="fa-solid fa-phone" style="font-size:11px;"></i> (00) 000 000 00</p>
+    </div>
+  </div>
+
+  <script>
+      //responsible for hiding and showing the rewiew block
+      function toggleReview() {
+      let reviewElement = document.getElementById('reviewElement');
+      if (reviewElement.style.display === 'none') {
+        reviewElement.style.display = 'block';
+      } else {
+        reviewElement.style.display = 'none';
+      }
+    }
+
+
+    //Funtion that allow rating using stars
+      function setRating(value) {
+    // Remove 'selected' class from all stars
+      const stars = document.getElementsByClassName('star');
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove('selected');
+      }
+      
+      // Add 'selected' class to stars up to the clicked star
+      for (let i = 0; i < value; i++) {
+        stars[i].classList.add('selected');
+      }
+      
+      // Set the selected rating value to the hidden input field
+      document.getElementById('id_rating').value = value;
+    }
+
+
+    function generateStarRating(rating) {
+      let stars = '';
+      for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+          stars += '<i class="fas fa-star"></i>';
+        } else {
+          stars += '<i class="far fa-star"></i>';
+        }
+      }
+      return stars;
+    }
+
+    // Update the star rating for each rating element
+    let ratingElements = document.querySelectorAll('.stars');
+    ratingElements.forEach(function(element) {
+      let rating = parseFloat(element.innerText);
+      element.innerHTML = generateStarRating(rating);
+    });
+
+
+      // Function to display the average rating using stars
+      function displayAverageRating(averageRating) {
+        let ratingElement = document.getElementById('averageRating');
+        ratingElement.innerHTML = '';
+
+        // Generate the filled stars
+        for (let i = 1; i <= averageRating; i++) {
+          let star = document.createElement('span');
+          star.className = 'avgstar';
+          star.innerHTML = '<i class="fas fa-star"></i>';
+          ratingElement.appendChild(star);
+        }
+
+        // Generate the empty stars
+        for (let i = averageRating + 1; i <= 5; i++) {
+          let star = document.createElement('span');
+          star.className = 'avgstar';
+          star.innerHTML = '<i class="far fa-star"></i>';
+          ratingElement.appendChild(star);
+        }
+      }
+
+      // Fetch the average rating value from the server
+      let averageRatingValue = {{average_rating }};
+
+      // Display the initial average rating
+      displayAverageRating(averageRatingValue);
+
+      
+  // Get references to the profile picture and user details div
+  const profilePicture = document.getElementById('profilePicture');
+  const userDetails = document.getElementById('userDetails');
+
+  // Add a click event listener to the profile picture
+  profilePicture.addEventListener('click', () => {
+    // Toggle the visibility of the user details div
+    userDetails.style.display = (userDetails.style.display === 'none') ? 'block' : 'none';
+  });
+
+  // Function to toggle user details when clicking on the "Profile" link
+  function toggleUserDetails(event) {
+    // Prevent the default link behavior (following the href)
+    event.preventDefault();
+
+    // Toggle the visibility of the user details div
+    userDetails.style.display = (userDetails.style.display === 'none') ? 'block' : 'none';
+  }
+
+  function checkBorrow() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "{% url 'check_borrowed' book_id=book.id %}", true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.is_borrowed) {
+          // Book is already borrowed, show the message
+          var messageContainer = document.querySelector(".butt");
+          messageContainer.innerHTML = "<p style='width:100%; text-align:center; color: red; font-size: 18px;'>This book is already borrowed!</p>";        } else {
+          // Book is available, submit the form
+          document.getElementById("borrowForm").submit();
+        }
+      } else {
+        // Error handling if the request fails
+        console.error("Failed to check if book is borrowed.");
+      }
+    }
+  };
+  xhr.send();
+}
+  </script>
+</body>
+</html>
